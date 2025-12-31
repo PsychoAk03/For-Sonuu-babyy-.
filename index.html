@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Neha ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  font-family:Poppins, sans-serif;
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  perspective:1200px;
+  background:radial-gradient(circle at top,#2b0033,#000);
+}
+
+/* Card container */
+.card-container{
+  width:360px;
+  cursor:pointer;
+  position:relative;
+}
+
+/* Flip card */
+.card{
+  width:100%;
+  min-height:280px;
+  padding:24px;
+  border-radius:22px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.45);
+  background:rgba(255,255,255,0.14);
+  backdrop-filter:blur(12px);
+  transform-style:preserve-3d;
+  transition:transform 0.8s, background 1s;
+  text-align:center;
+  position:relative;
+}
+
+/* Card flipped */
+.card.flipped{
+  transform:rotateY(180deg);
+}
+
+/* Card front/back */
+.card-front, .card-back{
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  backface-visibility:hidden;
+  border-radius:22px;
+  padding:24px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+}
+
+/* Floating hearts */
+.heart{
+  position:absolute;
+  font-size:18px;
+  animation:floatUp linear infinite;
+  opacity:0.8;
+  user-select:none;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(100vh) scale(1);}
+  to{transform:translateY(-10vh) scale(1.5);}
+}
+
+/* Butterflies */
+.butterfly{
+  position:absolute;
+  font-size:28px;
+  animation:fly ease-in-out infinite;
+}
+
+@keyframes fly{
+  0%{transform:translate(0,0) rotate(0deg);}
+  25%{transform:translate(200px,-100px) rotate(20deg);}
+  50%{transform:translate(300px,-150px) rotate(-15deg);}
+  75%{transform:translate(150px,-50px) rotate(15deg);}
+  100%{transform:translate(0,0) rotate(0deg);}
+}
+
+/* Sparkles */
+.sparkle{
+  position:absolute;
+  color:#fff;
+  font-size:14px;
+  animation:sparkleMove linear infinite;
+  opacity:0.8;
+}
+
+@keyframes sparkleMove{
+  0%{transform:translateY(100vh) rotate(0deg);}
+  50%{opacity:1;}
+  100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+p{
+  font-size:15px;
+  line-height:1.75;
+  text-align:center;
+}
+h2,h3{
+  margin-bottom:12px;
+}
+</style>
+</head>
+<body>
+
+<!-- Hearts -->
+<div class="heart" style="left:5%; color:#ff4d6d; font-size:16px; animation-duration:6s;">💖</div>
+<div class="heart" style="left:20%; color:#ff99cc; font-size:20px; animation-duration:8s;">💗</div>
+<div class="heart" style="left:35%; color:#ffb366; font-size:18px; animation-duration:7s;">💕</div>
+<div class="heart" style="left:50%; color:#ff66b3; font-size:22px; animation-duration:9s;">💞</div>
+<div class="heart" style="left:65%; color:#ff3399; font-size:16px; animation-duration:10s;">💓</div>
+<div class="heart" style="left:80%; color:#ff6699; font-size:18px; animation-duration:7.5s;">💖</div>
+
+<!-- Butterflies -->
+<div class="butterfly" style="animation-duration:12s;">🦋</div>
+<div class="butterfly" style="animation-duration:15s; font-size:32px; left:50px;">🦋</div>
+<div class="butterfly" style="animation-duration:18s; font-size:24px; left:250px;">🦋</div>
+
+<!-- Card container -->
+<div class="card-container">
+  <div class="card" id="romanticCard">
+    <div class="card-front">
+      <h3>Hey… ❤️🥺</h3>
+      <p>It’s New Year today, and I felt like if I don’t say this now, my heart will feel heavy the whole day…</p>
+    </div>
+    <div class="card-back">
+      <h2>Tu aahes mhanun 💖</h2>
+      <p>Tu aahes mhanun mi strong aahe 💪, tu aahes mhanun majha mann shant rahta 🕊️, (तू आहेस म्हणूनच सगळं थोडं सोपं वाटतं 🥹)… and every moment with you is magical ✨🫂</p>
+    </div>
+  </div>
+</div>
+
+<audio id="song" src="song.mp3" autoplay loop></audio>
+
+<script>
+const card = document.getElementById('romanticCard');
+
+// Split your full message into mashup cards
+const cardsContent = [
+  {
+    front: "<h3>Hey… ❤️🥺</h3><p>It’s New Year today, and I felt like if I don’t say this now, my heart will feel heavy the whole day…</p>",
+    back: "<h2>Tu aahes mhanun 💖</h2><p>Tu aahes mhanun mi strong aahe 💪, tu aahes mhanun mi haar nahi maanta ❤️, tu aahes mhanun majha mann shant rahta 🕊️… and every moment with you is magical ✨🫂</p>"
+  },
+  {
+    front: "<h3>Majha Ayushya 🌸</h3><p>Before you, life was moving… after you, life started meaning something ✨</p>",
+    back: "<h2>Tu Majha 🌹</h2><p>Meeting you wasn’t just luck, it was a blessing 🧿. You came quietly, but changed everything deeply 🥹… I just want you with me 🤍</p>"
+  },
+  {
+    front: "<h3>Every Moment 💞</h3><p>With you, I learned love is about staying, understanding, choosing each other ❤️</p>",
+    back: "<h2>Together Forever 🫂</h2><p>You chose me again and again 🤍… there are days I overthink, yet you stayed, understood, held me 🫂</p>"
+  },
+  {
+    front: "<h3>Majhi Khushi 💖</h3><p>Tu aahes mhanun mi strong aahe 💪… you are not just my girlfriend, you are my peace 🤍</p>",
+    back: "<h2>My Love 🌹</h2><p>Majha sukoon tu aahes 🥹… I want you in every chapter, every phase, every version of life 🧿… side by side, always 🫂</p>"
+  },
+  {
+    front: "<h3>Happy New Year 🎉✨</h3><p>Hi story fakta shabdan sathi nahi aahe… hi majhya dilatli feelings aahet ❤️</p>",
+    back: "<h2>I Love You ❤️🥹</h2><p>Je mi roj bolu shakat nahi, pan roj feel karto 🥹… I love you more than words can ever say 😭❤️</p>"
+  }
+];
+
+let index = 0;
+let colors = ['#ff4d6d','#ff99cc','#ffb366','#ff66b3','#ff3399','#ff6699'];
+let bgColors = ['#330022','#3a002e','#4b0033','#2b001f','#400033','#250020'];
+
+card.addEventListener('click', ()=>{
+  card.classList.toggle('flipped');
+  // Next card content after flip
+  index = (index + 1) % cardsContent.length;
+  card.innerHTML = `
+    <div class="card-front">${cardsContent[index].front}</div>
+    <div class="card-back">${cardsContent[index].back}</div>
+  `;
+  // Change card and background color
+  card.style.background = colors[index % colors.length];
+  document.body.style.background = `radial-gradient(circle at top, ${bgColors[index % bgColors.length]}, #000)`;
+});
+
+// Song
+const song = document.getElementById('song');
+song.volume = 0.55;
+</script>
+
+</body>
+</html>
